@@ -1,5 +1,5 @@
 <template>
-  <aside id="g-sidebar" class="jp-sidebar" style="background-color: rgb(41,50,57)" :style="sidebarLayoutSkin === '5' || sidebarLayoutSkin === '9' ?`background:${defaultTheme}`: ''" :class="'jp-sidebar--' + sidebarLayoutSkin">
+  <aside id="g-sidebar" class="jp-sidebar" style="background-color: rgb(41,50,57);text-align: left;" :style="sidebarLayoutSkin === '5' || sidebarLayoutSkin === '9' ?`background:${defaultTheme}`: ''" :class="'jp-sidebar--' + sidebarLayoutSkin">
     <div class="jp-sidebar__inner" style="overflow-x: hidden;bottom: 50px;">
       <el-menu unique-opened
                :default-active="menuActiveName || 'home'"
@@ -21,7 +21,7 @@
     <div>
       <el-menu id="low" class="jp-navbar__menu" style="position: absolute;border: none;" :class="sidebarFold ? 'whicoll':'whi'">
         <el-menu-item style="height: 40px;line-height: 40px;" class="jp-navbar__switch" :collapse="sidebarFold"  @click="sidebarFold = !sidebarFold">
-          <i :class="sidebarFold ? 'fa fa-indent':'fa fa-outdent'"></i>
+          <i :class="sidebarFold ? 'el-icon-caret-right':'el-icon-caret-left'"></i>
         </el-menu-item>
       </el-menu>
     </div>
@@ -92,7 +92,7 @@
     data () {
       return {
         sidebarFold: false,
-        dynamicMenuRoutes: [{name: '客户管理', id: 'khgl', childNodes: [{name: '客户列表', id: 'khgllist'}]}]
+        dynamicMenuRoutes: []
       }
     },
     components: {
@@ -124,7 +124,7 @@
     //   },
       leftMenuList: {
         get () {
-          return [{name: '客户管理', id: 'khgl', icon: 'el-icon-user-solid', childNodes: [{name: '客户列表', id: 'khgllist'}]}]
+          return [{name: '客户管理', id: 'khgl', icon: 'el-icon-user-solid', childNodes: [{name: '客户列表', id: 'khgllist', icon: 'el-icon-tickets'}]}]
         },
         set (val) {
         //   this.$store.commit('common/updateLeftMenuList', val)
@@ -184,36 +184,37 @@
     },
     methods: {
       // 路由操作
-    //   routeHandle (route) {
-    //     if (this.isTab) {
-    //       // tab选中, 不存在先添加
-    //       let tab = this.mainTabs.filter(item => item.fullPath === route.fullPath)[0]
-    //       if (!tab) {
-    //         if (route.meta.isDynamic) {
-    //           route = this.dynamicMenuRoutes.filter(item => item.name === route.name)[0]
-    //           if (!route) {
-    //             return console.error('未能找到可用标签页!')
-    //           }
-    //         }
-    //         tab = {
-    //           menuId: route.meta.menuId || route.name,
-    //           name: route.name,
-    //           title: this.$router.currentRoute.query.title || route.meta.title,
-    //           type: route.meta.type,
-    //           iframeUrl: route.meta.iframeUrl || '',
-    //           query: this.$router.currentRoute.query,
-    //           parmas: this.$router.currentRoute.parmas,
-    //           fullPath: this.$router.currentRoute.fullPath
-    //         }
-    //         this.mainTabs = this.mainTabs.concat(tab)
-    //       }
-    //       tab.title = this.$router.currentRoute.query.title || route.meta.title
-    //       this.menuActiveName = tab.menuId + ''
-    //       this.mainTabsActiveName = tab.fullPath
-    //       let topMenuActiveIndex = route.meta.parentIds && route.meta.parentIds.split(',').length > 2 ? route.meta.parentIds.split(',')[2] : '0'
-    //       this.$store.commit('common/updateTopMenuActiveIndex', topMenuActiveIndex)
-    //     }
-    //   }
+      routeHandle (route) {
+        console.log(route)
+        // if (this.isTab) {
+        //   // tab选中, 不存在先添加
+        //   let tab = this.mainTabs.filter(item => item.fullPath === route.fullPath)[0]
+        //   if (!tab) {
+        //     if (route.meta.isDynamic) {
+        //       route = this.dynamicMenuRoutes.filter(item => item.name === route.name)[0]
+        //       if (!route) {
+        //         return console.error('未能找到可用标签页!')
+        //       }
+        //     }
+        //     tab = {
+        //       menuId: route.meta.menuId || route.name,
+        //       name: route.name,
+        //       title: this.$router.currentRoute.query.title || route.meta.title,
+        //       type: route.meta.type,
+        //       iframeUrl: route.meta.iframeUrl || '',
+        //       query: this.$router.currentRoute.query,
+        //       parmas: this.$router.currentRoute.parmas,
+        //       fullPath: this.$router.currentRoute.fullPath
+        //     }
+        //     this.mainTabs = this.mainTabs.concat(tab)
+        //   }
+        //   tab.title = this.$router.currentRoute.query.title || route.meta.title
+        //   this.menuActiveName = tab.menuId + ''
+        //   this.mainTabsActiveName = tab.fullPath
+        //   let topMenuActiveIndex = route.meta.parentIds && route.meta.parentIds.split(',').length > 2 ? route.meta.parentIds.split(',')[2] : '0'
+        //   this.$store.commit('common/updateTopMenuActiveIndex', topMenuActiveIndex)
+        // }
+      }
     }
   }
 </script>

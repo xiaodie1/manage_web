@@ -5,9 +5,9 @@
     <template>
       <main-navbar ref="navbar" @showRight="showRight" />
       <main-sidebar @change="setSidebarFold"/>
-      <!-- <div class="jp-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
+      <div class="jp-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
         <main-content/>
-      </div> --> -->
+      </div>
       <!-- <main-right ref="mainRight"/> -->
     </template>
   </div>
@@ -16,6 +16,7 @@
 <script>
   import MainNavbar from './layout/common_top'
   import MainSidebar from './layout/common_left'
+  import MainContent from './layout/common_center'
   export default {
     data () {
       return {
@@ -25,7 +26,8 @@
     },
     components: {
       MainNavbar,
-      MainSidebar
+      MainSidebar,
+      MainContent
     },
     computed: {
       documentClientHeight: {

@@ -54,6 +54,7 @@
       },
       // 通过menuId与动态(菜单)路由进行匹配跳转至指定路由
       gotoRouteHandle (menu) {
+        console.log(menu)
         const route = this.dynamicMenuRoutes.filter(item => item.meta.menuId === menu.id)
         if (route.length >= 1) {
           let routePath = this.translateRouterPath(menu)
